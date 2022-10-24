@@ -18,9 +18,9 @@ RUN mkdir /var/run/lighttpd && chown www-data: /var/run/lighttpd
 RUN mkfifo -m 600 /tmp/stdout && chown www-data: /tmp/stdout
 
 COPY php.ini /usr/local/etc/php/conf.d/app.ini
-COPY supervisord.conf /srv/supervisord.conf
 COPY lighttpd.conf /etc/lighttpd/lighttpd.conf
+COPY supervisord.conf /etc/supervisor/supervisord.conf
 
-CMD ["supervisord", "-c", "supervisord.conf"]
+CMD ["supervisord"]
 WORKDIR "/srv"
 EXPOSE 80
